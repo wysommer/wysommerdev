@@ -1,6 +1,8 @@
 'use client';
 
+import { ArrowLeftIcon } from 'lucide-react';
 import { useState, useRef } from 'react';
+import Link from 'next/link';
 
 export default function ContactPage() {
     const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
@@ -48,9 +50,14 @@ export default function ContactPage() {
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-black to-blue-400 flex flex-col items-center justify-center">
-            
+            <Link href="/enter"
+              className="absolute top-4 left-4 text-white font-poppins text-sm hover:scale-110 hover:bg-gradient-to-r from-blue-500 to-purple-500 hover:scale-105 transition-all duration-300 cursor-pointer flex items-center gap-1 p-2 rounded-full"
+            >
+              <ArrowLeftIcon className="w-4 h-4" />
+              back
+            </Link>
             <h1 className="text-white text-4xl font-bold font-poppins mb-7">contact me</h1>
-            <div className="w-full max-w-lg bg-black/20 border border-white/10 hover:border-lime-500 rounded-xl p-7">
+            <div className="w-3/4 md:w-full max-w-lg bg-black/20 border border-white/10 hover:border-lime-500 rounded-xl p-7">
                 <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-4">
                     <input 
                         type="text" 
