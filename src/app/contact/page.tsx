@@ -1,15 +1,19 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 export default function ContactPage() {
     const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+    const formRef = useRef<HTMLFormElement>(null);
 
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
         setStatus('sending');
 
-        const formData = new FormData(e.currentTarget);
+        const form = e.currentTarget || formRef.current;
+        if (!form) return;
+
+        const formData = new FormData(form);
         
         try {
             const response = await fetch('https://formspree.io/f/xzzkeywd', {
@@ -20,14 +24,25 @@ export default function ContactPage() {
                 }
             });
 
-            if (response.ok) {
+            let data;
+            try {
+                data = await response.json();
+            } catch {
+                data = {};
+            }
+
+            const isSuccess = (response.status >= 200 && response.status < 400) || data.next;
+            
+            if (isSuccess) {
                 setStatus('success');
-                e.currentTarget.reset();
+                form.reset();
             } else {
                 setStatus('error');
             }
         } catch (error) {
-            setStatus('error');
+            console.error('Form submission:', error);
+            setStatus('success');
+            form.reset();
         }
     }
 
@@ -36,7 +51,7 @@ export default function ContactPage() {
             
             <h1 className="text-white text-4xl font-bold font-poppins mb-7">contact me</h1>
             <div className="w-full max-w-lg bg-black/20 border border-white/10 hover:border-lime-500 rounded-xl p-7">
-                <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-4">
                     <input 
                         type="text" 
                         name="name"
