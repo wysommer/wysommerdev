@@ -21,6 +21,12 @@ export default function EnterPage() {
         home
       </Link>
       <Link
+        href="/about"
+        className="absolute left-1/2 -translate-x-1/2 top-4 text-white font-poppins text-sm hover:bg-gradient-to-r from-blue-500 to-purple-500 hover:bg-clip-text hover:text-transparent hover:scale-110 transition-all duration-300"
+      >
+        about
+      </Link>
+      <Link
         href="/portfolio"
         className="hidden md:block absolute top-4 right-4 text-white font-poppins text-sm hover:bg-gradient-to-r from-blue-500 to-purple-500 hover:bg-clip-text hover:text-transparent hover:scale-110 transition-all duration-300"
       >

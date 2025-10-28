@@ -26,7 +26,7 @@ export default function LinksPage() {
     <div className="h-screen">
       <Link
         href="/enter"
-        className="z-10 absolute top-4 left-4 flex items-center gap-2 text-white font-poppins text-sm hover:scale-110 hover:bg-gradient-to-r from-blue-500 to-purple-500 rounded-full p-2 transition-all duration-300 cursor-pointer"
+        className="z-10 absolute top-4 left-4 flex items-center gap-1 text-white font-poppins text-sm hover:scale-110 hover:bg-gradient-to-r from-blue-500 to-purple-500 rounded-full p-2 transition-all duration-300 cursor-pointer"
       >
         <ArrowLeftIcon className="w-4 h-4" />
         back

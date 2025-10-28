@@ -14,9 +14,10 @@ export default function PortfolioPage() {
     <div className="bg-gradient-to-br from-black to-gray-700">
       <Link
         href="/enter"
-        className="z-10 absolute top-4 left-4 text-white font-poppins text-sm hover:scale-110 hover:bg-gradient-to-r from-blue-500 to-purple-500 hover:text-white p-2 rounded-full transition-all duration-300 cursor-pointer"
+        className="flex items-center gap-1 z-10 absolute top-4 left-4 text-white font-poppins text-sm hover:scale-110 hover:bg-gradient-to-r from-blue-500 to-purple-500 hover:text-white p-2 rounded-full transition-all duration-300 cursor-pointer"
       >
         <ArrowLeftIcon className="w-4 h-4" />
+        back
       </Link>
       <Link
         href="/portfolio/links"
